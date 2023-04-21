@@ -40,6 +40,6 @@ def update(ind):
     root.after(2, update, ind)
 character = c.create_image((100,100), image=frames[0])
 k=-100
-p=c.create_text(100,k,text="X",font="Arial 25",fill="red")#"#09FF15")#▲ silver geht sogar!
+p=c.create_text(100,k,text="X",font="Arial 25",fill="red")#"#09FF15")
 root.after(0, update, 0)
 root.mainloop()
