@@ -12,10 +12,9 @@ frames = [PhotoImage(file='pygif.gif',format = 'gif -index %i' %(i)) for i in ra
 __round=1
 r=0
 not_timeout=False
-timeThis=0
 level=0
 def update(ind):
-    global k,__round,level,r,time,timeThis,not_timeout
+    global k,__round,level,r,time,not_timeout
     frame = frames[ind]
     ind += 1
     if ind>=frameCnt:
@@ -25,6 +24,7 @@ def update(ind):
     k+=1.4 if __round>=2 else 0
     if k>round(float(c.cget("height"))) and __round==r+1:
         k=-100
+        not_timeout=False
     if not_timeout==False:
         c.itemconfig(p,fill="red")
     if 130<round(k)>60 and not_timeout==False:
@@ -37,10 +37,6 @@ def update(ind):
         c.itemconfig(p,fill="silver")
     c.coords(p,100,k)
     r=__round
-    timeThis+=2
-    if timeThis==2000:
-        timeThis=0
-        not_timeout=False
     root.after(2, update, ind)
 character = c.create_image((100,100), image=frames[0])
 k=-100
